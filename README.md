@@ -4,4 +4,5 @@
 
 
 Desarrollado por Bryan Villanueba & Jose Castrillon 
-Programa de <h1>Gestión de Sistemas Informáticos</h1> 
+Programa de <h5>Gestión de Sistemas Informáticos</h5> 
+
