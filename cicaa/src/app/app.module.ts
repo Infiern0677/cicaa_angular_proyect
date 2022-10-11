@@ -11,6 +11,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { LoginComponent } from './pages/login/login.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
+import { ModalComponent } from './componentes/modal/modal.component';
 
 
 
@@ -23,7 +24,8 @@ import { ContactanosComponent } from './pages/contactanos/contactanos.component'
     AadmistracionComponent,
     LoginComponent,
     PerfilComponent,
-    ContactanosComponent
+    ContactanosComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

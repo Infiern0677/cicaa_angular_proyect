@@ -1,23 +1,82 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="row">
-        <h1 class="fs-5 text-end mb-3" >Datos personales</h1>
+        <h1 class="fs-5 text-end mb-3">Datos personales</h1>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
-            <img src="https://2.bp.blogspot.com/-P0FrHCBLyFk/W_4pzlpkYSI/AAAAAAAAS68/rOKPuEcKyeMenXh_rTsocxC7Bg3XpUwzwCLcBGAs/s1600/Mia%2BKhalifa%2Bsexy%2Bbikini%2Bphotos%2Bcleavage%2Bshow%2B%252827%2529.jpg" alt=""  class="img-fluid perfil shadow p-3 mb-5 bg-body rounded" srcset="">
+            <img src="https://2.bp.blogspot.com/-P0FrHCBLyFk/W_4pzlpkYSI/AAAAAAAAS68/rOKPuEcKyeMenXh_rTsocxC7Bg3XpUwzwCLcBGAs/s1600/Mia%2BKhalifa%2Bsexy%2Bbikini%2Bphotos%2Bcleavage%2Bshow%2B%252827%2529.jpg"
+                alt="" class="img-fluid perfil shadow p-3 mb-5 bg-body rounded" srcset="">
         </div>
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mb-3">
-            
+
             <div class="acciones text-end">
-                <button class="btn btn-warning" disabled="disabled">Editar</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Editar
+                </button>
+
+                <app-modal titulo="Editar perfil">
+                    <div class="container-fluid text-center">
+                        <div class="row">
+                            <div class="col-3">
+
+                                <label for="txtDireccion">Dirección: </label>
+
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" name="txtDireccion" id="txtDireccion"
+                                     placeholder="Ingresa la dirección">
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-3">
+
+                                <label for="txtCorreo">Correo: </label>
+
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" name="txtCorreo" id="txtCorreo"
+                                     placeholder="Ingresa un correo">
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-3">
+
+                                <label for="txtTelefono">Telefono: </label>
+
+                            </div>
+                            <div class="col-9">
+                                <input type="number" class="form-control" name="txtTelefono" id="txtTelefono"
+                                    placeholder="Ingresa un telefono">
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-3">
+
+                                <label for="fileFoto">Foto: </label>
+
+                            </div>
+                            <div class="col-9">
+                                <input type="file" class="form-control" name="fileFoto" id="fileFoto">
+                            </div>
+                        </div>
+                    </div>
+                    <!--endcontainer--->
+
+                </app-modal>
             </div>
             <div class="informacion ms-5">
-                <p class="fs-3" >Sarah Joe Chamoun</p>
-                <b>Cargo: </b><p class="" >Inginería Telematica</p>
-                <b>Documento: </b><p class="" >1023723862</p>
-                <b>Dirección: </b><p class="" >CALLE 61 9 38 AP 1201, BOGOTA, BOGOTA</p>
-                <b>Correo: </b><p class="" >miakalifa.info@hotmai.com</p>
-                <b>Telefono: </b><p class="" >311 3242 322</p>
-                
+                <p class="fs-3">Sarah Joe Chamoun</p>
+                <b>Cargo: </b>
+                <p class="">Docente</p>
+                <b>Documento: </b>
+                <p class="">1023723862</p>
+                <b>Dirección: </b>
+                <p class="">CALLE 61 9 38 AP 1201, BOGOTA, BOGOTA</p>
+                <b>Correo: </b>
+                <p class="">miakalifa.info@hotmai.com</p>
+                <b>Telefono: </b>
+                <p class="">311 3242 322</p>
+
             </div>
         </div>
     </div>
