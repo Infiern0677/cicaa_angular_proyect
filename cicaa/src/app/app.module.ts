@@ -8,6 +8,7 @@ import { AdasboardComponent } from './pages/admin/adasboard/adasboard.component'
 import { FooterComponent } from './componentes/footer/footer.component';
 import { AadmistracionComponent } from './pages/admin/aadmistracion/aadmistracion.component';
 import { DataTablesModule } from 'angular-datatables';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
@@ -17,7 +18,8 @@ import { DataTablesModule } from 'angular-datatables';
     NavbarComponent,
     AdasboardComponent,
     FooterComponent,
-    AadmistracionComponent
+    AadmistracionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
