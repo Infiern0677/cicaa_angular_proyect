@@ -10,6 +10,7 @@ import { AadmistracionComponent } from './pages/admin/aadmistracion/aadmistracio
 import { DataTablesModule } from 'angular-datatables';
 import { LoginComponent } from './pages/login/login.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 
 
 
@@ -21,7 +22,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     FooterComponent,
     AadmistracionComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    ContactanosComponent
   ],
   imports: [
     BrowserModule,
