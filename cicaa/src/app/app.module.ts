@@ -12,6 +12,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ContactanosComponent } from './pages/contactanos/contactanos.component';
 import { ModalComponent } from './componentes/modal/modal.component';
+import { ButtonComponent } from './componentes/button/button.component';
+import { InputComponent } from './componentes/input/input.component';
 
 
 
@@ -25,7 +27,9 @@ import { ModalComponent } from './componentes/modal/modal.component';
     LoginComponent,
     PerfilComponent,
     ContactanosComponent,
-    ModalComponent
+    ModalComponent,
+    ButtonComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
