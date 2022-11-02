@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +17,8 @@ import { ContactanosComponent } from './pages/contactanos/contactanos.component'
 import { ModalComponent } from './componentes/modal/modal.component';
 import { ButtonComponent } from './componentes/button/button.component';
 import { InputComponent } from './componentes/input/input.component';
+import { ValidacionespropiasComponent } from './class/validacionespropias/validacionespropias.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -29,12 +34,17 @@ import { InputComponent } from './componentes/input/input.component';
     ContactanosComponent,
     ModalComponent,
     ButtonComponent,
-    InputComponent
+    InputComponent,
+    ValidacionespropiasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
