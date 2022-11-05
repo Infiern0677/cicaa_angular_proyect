@@ -18,7 +18,6 @@ export class AdasboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.RenderChart();
-    document.getElementById("user").innerHTML = localStorage.name;
   }
 
   RenderChart() {

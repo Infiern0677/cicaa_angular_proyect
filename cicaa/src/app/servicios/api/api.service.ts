@@ -35,7 +35,6 @@ export class ApiService {
         if(res.message === 'ok'){
           this.saveToken(res.token);
           this.loggedIn.next(true);
-          localStorage.setItem('name', res.name);
         }
         
 
@@ -46,7 +45,6 @@ export class ApiService {
   }
   logout(): void {
     localStorage.removeItem('token');
-    localStorage.removeItem('name');
     this.loggedIn.next(false);
   }
 
