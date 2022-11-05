@@ -1,8 +1,12 @@
 <app-navbar></app-navbar>
 
-<div class="container">
+<div class="container mb-1">
+  <h1 class="user" *ngIf="api.isLogged | async res ">
+  </h1>
+
     <div class="row">
         <h1 class="text-center fs-5 mb-5" >Dashboard</h1>
+
         <div class="chart-container col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12 mb-3">
             <canvas id="piChart" width="600" height="100"></canvas>
         </div>

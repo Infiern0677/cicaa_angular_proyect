@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { ApiService } from 'src/app/servicios/api/api.service';
+
 
 Chart.register(...registerables);
 
@@ -10,7 +12,9 @@ Chart.register(...registerables);
 })
 export class AdasboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public api:ApiService) {
+    document.getElementById("user").innerHTML = localStorage.name;
+   }
 
   ngOnInit(): void {
     this.RenderChart();

@@ -1,4 +1,4 @@
 export interface LoginI{
-    usuario:string;
-    pasword:string;
+    CORREO:string;
+    CONTRASENA:string;
 }

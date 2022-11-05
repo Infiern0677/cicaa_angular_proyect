@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../servicios/api/api.service';
 import { LoginI } from '../../model/login.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,27 @@ import { LoginI } from '../../model/login.interface';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup; //////
   private isvalidemail = /\S+@\S+\.\S+/;
-  constructor(private _builder: FormBuilder, private api:ApiService) {
+  estado:boolean = true;
+
+
+  constructor(
+    private _builder: FormBuilder, 
+    private api:ApiService, 
+    private router:Router) {
     this.loginForm = this._builder.group({
-      username: ['', [Validators.required, Validators.pattern(this.isvalidemail)]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      CORREO: ['', [Validators.required, Validators.pattern(this.isvalidemail)]],
+      CONTRASENA: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
   onLogin(form:LoginI){
-    this.api.loginByemail(form).subscribe(data =>{console.log(data);})
+    this.api.login(form).subscribe((res) => {
+      if(res[`message`] != 'fail'){
+        this.router.navigate([""]);
+      }else{
+        this.estado = false;
+    
+      }
+    });
   }
 
   ngOnInit(): void {}
