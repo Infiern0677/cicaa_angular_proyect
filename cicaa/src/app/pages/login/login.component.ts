@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup; //////
   private isvalidemail = /\S+@\S+\.\S+/;
   estado:boolean = true;
-  userac:string  ="";
 
   constructor(
     private _builder: FormBuilder, 
@@ -28,8 +27,6 @@ export class LoginComponent implements OnInit {
     this.api.login(form).subscribe((res) => {
       if(res[`message`] != 'fail'){
         this.router.navigate([""]);
-        this.userac = res[`name`];
-
       }else{
         this.estado = false;
     
