@@ -13,7 +13,7 @@ Chart.register(...registerables);
 export class AdasboardComponent implements OnInit {
 
   constructor(public api:ApiService) {
-    document.getElementById("user").innerHTML = localStorage.name;
+
    }
 
   ngOnInit(): void {
