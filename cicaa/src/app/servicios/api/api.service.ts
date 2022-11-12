@@ -8,7 +8,6 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { Router } from '@angular/router';
 
 
-
 const helper = new JwtHelperService();
 
 @Injectable({
@@ -20,7 +19,7 @@ export class ApiService {
   private loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http:HttpClient, private router:Router) {
-    this.checkToken();
+    //this.checkToken();
   }
 
   get isLogged(): Observable<boolean>{
@@ -44,6 +43,7 @@ export class ApiService {
       catchError((err) => this.handlerError(err))
     );
   }
+  
   logout(): void {
     localStorage.removeItem('token');
     this.loggedIn.next(false);

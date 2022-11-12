@@ -6,36 +6,60 @@
             <div class="card shadow p-2 mt-1 mb-5 bg-body rounded">
                 <div class="card-body">
                     <h5 class="card-title">Permisos</h5>
-                    <form action="/action_page.php">
+                    <form [formGroup]="pAdminForm" (ngSubmit)="onPermit(pAdminForm.value)">
+                        
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" required>
-                                <option selected>Abrir menu</option>
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="typedocument"  autofocus required>
+                                <option value="" selected>Abrir menu</option>
                                 <option value="1">CC</option>
                                 <option value="2">TI</option>
                                 <option value="3">CE</option>
                             </select>
                             <label for="floatingSelect">Selecionar tipo documento</label>
+                            <div *ngIf="this.pAdminForm.get('typedocument').touched">
+                                <div *ngIf="this.pAdminForm.get('typedocument').errors?.required" class="alert alert-danger">Type document is required.</div>
+                            </div>
                         </div>
+                       
                         <div class="mb-3 mt-3">
                             <input type="text" class="form-control" id="txtDocumen" placeholder="Enter documento"
-                                name="txtDocumen" required>
+                            formControlName="txtDocumen"  required>
+
+                            <div *ngIf="this.pAdminForm.get('txtDocumen').touched || this.pAdminForm.get('txtDocumen').dirty">
+                                <div *ngIf="this.pAdminForm.get('txtDocumen').errors?.required" class="alert alert-danger">The document is required.</div>
+                                <div *ngIf="this.pAdminForm.get('txtDocumen').errors?.minlength || this.pAdminForm.get('txtDocumen').errors?.maxlength"  class="alert alert-danger">Please, this field must have a minimum of 8 characters and a maximum of 10 characters.</div>
+                                <div *ngIf="this.pAdminForm.get('txtDocumen').errors?.pattern" class="alert alert-danger">Please, this field only for numbers.</div>
+                            </div>
                         </div>
                         <div class="mb-3 mt-3">
                             <input type="text" class="form-control" id="txtNombre" placeholder="Enter nombre"
-                                name="txtNombre" required>
+                            formControlName="txtNombre" required>
+
+                            <div *ngIf="this.pAdminForm.get('txtNombre').touched || this.pAdminForm.get('txtNombre').dirty">
+                                <div *ngIf="this.pAdminForm.get('txtNombre').errors?.required" class="alert alert-danger">The name is required.</div>
+                                <div *ngIf="this.pAdminForm.get('txtNombre').errors?.pattern" class="alert alert-danger">Please, this field only for letters.</div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <input type="text" class="form-control" id="txtApellido" placeholder="Enter apellido"
-                                name="txtApellido" required>
+                                formControlName="txtApellido" required>
+
+                                <div *ngIf="this.pAdminForm.get('txtApellido').touched || this.pAdminForm.get('txtApellido').dirty">
+                                    <div *ngIf="this.pAdminForm.get('txtApellido').errors?.required" class="alert alert-danger">The surname is required.</div>
+                                    <div *ngIf="this.pAdminForm.get('txtApellido').errors?.pattern" class="alert alert-danger">Please, this field only for letters.</div>
+                                </div>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" required >
-                                <option selected>Abrir menu</option>
-                                <option value="1">12 </option>
-                                <option value="2">4</option>
-                                <option value="3">5</option>
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="nSalon" required >
+                                <option value="" selected>Abrir menu</option>
+                                <option value="12">12 </option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                             <label for="floatingSelect">Agregar permiso a salon</label>
+                            <div *ngIf="this.pAdminForm.get('nSalon').touched">
+                                <div *ngIf="this.pAdminForm.get('nSalon').errors?.required" class="alert alert-danger">The classroom is required.</div>
+                            </div>
                         </div>
                         <div class="form-group ps-1">
                             <input type="date" name="" id="" required >

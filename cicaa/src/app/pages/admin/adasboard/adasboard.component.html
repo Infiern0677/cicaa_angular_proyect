@@ -20,7 +20,7 @@
         </div> -->
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
            <h1 class="fs-4 mb-5 mt-4">Lista de asistencias</h1>
-            <table class="table table-hover border rounded border-primary  p-3 shadow-lg  mb-5 bg-body">
+            <!-- <table class="table table-hover border rounded border-primary  p-3 shadow-lg  mb-5 bg-body">
                 <thead class="bg-info" >
                     <tr>
                       <th scope="col">#</th>
@@ -113,9 +113,32 @@
                       </tr>
 
                   </tbody>
-            </table>
-           
+            </table> -->
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+              <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+          <mat-paginator [pageSizeOptions]="[6, 12, 18]" showFirstLastButtons></mat-paginator>
         </div>
+
+
+
     </div>
 </div>
 
