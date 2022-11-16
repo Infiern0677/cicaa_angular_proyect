@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 d-none d-md-block d-lg-block">
       <img
-        src="../assets/img/dog_login.png"
+        src="../assets/img/dog_login_gorra.png"
         class="img-fluid w-75"
         alt=""
         srcset=""
@@ -74,22 +74,34 @@
                 </div>
 
                 <div *ngIf="this.loginForm.get('CONTRASENA').touched || this.loginForm.get('CONTRASENA').dirty">
-                    <div *ngIf="this.loginForm.get('CONTRASENA').errors?.required" class="alert alert-danger">Password is required.</div>
-                    <div class="alert alert-danger" *ngIf="this.loginForm.get('CONTRASENA').errors?.minlength">Please, this field must be longer than 8 characters.</div>
+                    <div *ngIf="this.loginForm.get('CONTRASENA').errors?.required" class="alert alert-danger">
+                      Password is required.
+                    </div>
+                    <div class="alert alert-danger" *ngIf="this.loginForm.get('CONTRASENA').errors?.minlength">
+                      Please, this field must be longer than 8 characters.
+                    </div>
                 </div>
-            
 
-                <a href="#" class="nav-link active text-end mt-3"
-                  >¿Olvido su contraseña?</a
-                >
 
+                <div class="">
+                  <div class="row align-items-start">
+                    <div class="col-6 text-start">
+                      <a href="#" class="nav-link active">
+                        ¿Crear una cuenta?
+                      </a>
+                    </div>
+                    <div class="col-6">
+                      <a href="#" class="nav-link active t-1">
+                        ¿Olvido su contraseña?
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="#" class="nav-link active  mt-1">¿Olvido su contraseña?</a>
+                <a href="#" class="nav-link active text-end mt-3">¿Olvido su contraseña?</a>
                 <div class="mt-3">
-                  <button
-                  [disabled]="this.loginForm.invalid"
-                    class="btn btn-success w-100"
-                    type="submit"
-                    routerLink="#"
-                  >
+                  <button [disabled]="this.loginForm.invalid" class="btn btn-success w-100" type="submit" routerLink="#">
                     INGRESAR
                   </button>
                 </div>
