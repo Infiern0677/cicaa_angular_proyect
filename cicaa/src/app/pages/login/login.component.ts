@@ -12,27 +12,27 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup; //////
   private isvalidemail = /\S+@\S+\.\S+/;
-  estado:boolean = true;
+  estado: boolean = true;
 
   constructor(
-    private _builder: FormBuilder, 
-    private api:ApiService, 
-    private router:Router) {
+    private _builder: FormBuilder,
+    private api: ApiService,
+    private router: Router) {
     this.loginForm = this._builder.group({
       CORREO: ['', [Validators.required, Validators.pattern(this.isvalidemail)]],
       CONTRASENA: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
-  onLogin(form:LoginI){
+  onLogin(form: LoginI) {
     this.api.login(form).subscribe((res) => {
-      if(res[`message`] != 'fail'){
+      if (res[`message`] != 'fail') {
         this.router.navigate([""]);
-      }else{
+      } else {
         this.estado = false;
-    
+
       }
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
