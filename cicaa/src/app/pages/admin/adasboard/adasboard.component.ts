@@ -56,11 +56,12 @@ export class AdasboardComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   usuariosLista: ListaUsuariosI[] = [];
-  constructor(public api: ApiService) {}
+  constructor(public api: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.api.getUsuarios().subscribe((data) => {
-      console.log(typeof(data));
+      this.usuariosLista = data;
+      console.log(data);
     });
     this.RenderChart();
     this.dataSource.paginator = this.paginator;

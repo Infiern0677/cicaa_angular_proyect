@@ -21,30 +21,30 @@
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
       <h1 class="fs-4 mb-5 mt-4">Lista de asistencias</h1>
       <!-- <table mat-table [dataSource]="dataSource" matSort class="table table-striped mat-elevation-z8 table-bordered"> -->
-        <table class="table table-striped mat-elevation-z8 table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">CEDULA</th>
-              <th scope="col">NOMBRES </th>
-              <th scope="col">APELLIDOS</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let usuario of usuariosLista">
-                <th scope="row">{{usuario.IDu}}</th>
-                <td >{{usuario.CEDULA}}</td>
-                <td>{{usuario.NOMBRES}}</td>
-                <td>{{usuario.APELLIDOS}}</td>
-              </tr>
-          </tbody>
-        </table>
+      <table class="table table-striped mat-elevation-z8 table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CEDULA</th>
+            <th scope="col">NOMBRES </th>
+            <th scope="col">APELLIDOS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuariosLista">
+            <th scope="row">{{usuario.ID_USUARIO}}</th>
+            <td>{{usuario.CEDULA}}</td>
+            <td>{{usuario.NOMBRES}}</td>
+            <td>{{usuario.APELLIDOS}}</td>
+          </tr>
+        </tbody>
+      </table>
 
 
 
 
 
-        <!-- <ng-container matColumnDef="position">
+      <!-- <ng-container matColumnDef="position">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
           <td mat-cell *matCellDef="let element"> {{element.position}} </td>
         </ng-container>
