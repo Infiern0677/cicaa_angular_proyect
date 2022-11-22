@@ -28,14 +28,17 @@
             <th scope="col">CEDULA</th>
             <th scope="col">NOMBRES </th>
             <th scope="col">APELLIDOS</th>
+            <th scope="col">Rol</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let usuario of usuariosLista">
             <th scope="row">{{usuario.ID_USUARIO}}</th>
             <td>{{usuario.CEDULA}}</td>
-            <td>{{usuario.NOMBRES}}</td>
-            <td>{{usuario.APELLIDOS}}</td>
+            <td>{{usuario.NOMBRES | titlecase}}</td>
+            <td>{{usuario.APELLIDOS | titlecase}}</td>
+            <td *ngIf="usuario.ID_ROL==3">Estudiante</td>
+            <td *></td>
           </tr>
         </tbody>
       </table>
