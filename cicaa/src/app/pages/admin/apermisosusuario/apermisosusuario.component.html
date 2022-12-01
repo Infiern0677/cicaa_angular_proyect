@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-
 <div class="container">
     <div class="row">
         <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-5 mb-5">
@@ -95,13 +94,14 @@
         </div> -->
         <div class="col-xl-12 col-lg-8 col-md-8 col-sm-12 col-12 mt-2">
             <h1 class="fs-4 mb-5 mt-4 text-end">Administración de permisos</h1>
-            <!-- <button class="btn btn-primary fs-4 mb-5 mt-4" (click)="nuevoPermiso()">Nuevo permiso</button> -->
+            <h2 class="fs-4 mb-5 mt-4 ">Usuario : {{permisosUsuarioLista[0]['NOMBRES']}} {{permisosUsuarioLista[0]['APELLIDOS']}}</h2>
+            <!-- <button class="btn btn-primary fs-4 mb-5 mt-4">Nuevo permiso</button> -->
             <table class="table table-hover shadow p-3 mb-5 bg-body rounded">
                 <thead class="bg-info">
                     <tr class="text-center">
                         <th scope="col">ID registro</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
+                        <th scope="col">Salon</th>
+                        <th scope="col">Permiso</th>
                         <!-- <th scope="col">Rol</th> -->
                         <!-- <th scope="col">Salon</th>
                         <th scope="col">Permiso</th> -->
@@ -109,17 +109,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center" *ngFor="let permisos of permisosLista">
-                        <td>{{permisos.ID_PERMISO}}</td>
-                        <td>{{permisos.NOMBRES}}</td>
-                        <td>{{permisos.APELLIDOS}}</td>
+                    <tr class="text-center" *ngFor="let permiso of permisosUsuarioLista">
+                        <td>{{permiso.ID_PERMISO}}</td>
+                        <td>{{permiso.ID_SALON}}</td>
+                        <td *ngIf="permiso.PERMISO==1">Si</td>
+                        <td *ngIf="permiso.PERMISO==0">No</td>
                         <!-- <td *ngIf="permisos.ID_ROL==2">Docente</td>
                         <th scope="row">{{permisos.ID_SALON}}</th>
                         <td *ngIf="permisos.PERMISO==1">Si</td>
                         <td *ngIf="permisos.PERMISO==0">No</td> -->
                         <td>
                             <!-- <button class="btn btn-danger" disabled="disabled">Eliminar</button> -->
-                            <button class="btn btn-success" (click)="verPermisosUsuario(permisos.ID_USUARIO)">Ver</button>
+                            <button class="btn btn-success" (click)="editarPermisoUsuario(permiso.ID_PERMISO)">Ver</button>
                         </td>
                     </tr>
                     <!-- <tr>

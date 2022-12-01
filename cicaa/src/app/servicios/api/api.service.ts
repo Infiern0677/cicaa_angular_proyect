@@ -7,6 +7,10 @@ import { Observable, throwError, pipe, of, BehaviorSubject } from 'rxjs';
 import { catchError, map, filter } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt'
 import { Router } from '@angular/router';
+import { logIngresosI } from 'src/app/model/logIngresos.interface';
+import { logIngresosDiasI } from 'src/app/model/logIngresosDias.interfaces';
+import { permisosI } from 'src/app/model/permisos.interfaces';
+import { onePermisosI } from 'src/app/model/onePermiso.interface';
 
 
 const helper = new JwtHelperService();
@@ -16,7 +20,7 @@ const helper = new JwtHelperService();
 })
 export class ApiService {
 
-  private url: string = "http://127.0.0.1:5000"
+  private url: string = "http://127.0.0.1:5000" //http://10.10.0.125:5000 //http://127.0.0.1:5000  http://172.28.21.220:5000
   private loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {
@@ -33,7 +37,7 @@ export class ApiService {
     return this.http.post<ResponseI>(direccion, form)
       .pipe(
         map((res: ResponseI) => {
-          if (res.message === 'ok') {
+          if (res.codigo === 'ok') {
             this.saveToken(res.token);
             this.loggedIn.next(true);
           }
@@ -55,7 +59,7 @@ export class ApiService {
     const userToken = localStorage.getItem('token');
     const isExpired = helper.isTokenExpired(userToken);
 
-    isExpired ? this.logout() : this.loggedIn.next(true);
+    isExpired ? this.logout() : this.loggedIn.next(false);
   }
 
 
@@ -75,10 +79,39 @@ export class ApiService {
     return throwError(() => errorMessage);
   }
 
-  getUsuarios(): Observable<ListaUsuariosI[]>{
+  getUsuarios(): Observable<ListaUsuariosI[]> {
     let direccion = this.url + "/usuarios";
     return this.http.get<ListaUsuariosI[]>(direccion)
   }
 
+  getLogIngresos(): Observable<logIngresosI[]> {
+    let direccion = this.url + "/log_ingresos_month";
+    return this.http.get<logIngresosI[]>(direccion)
+  }
+
+  getLogIngresosDias(): Observable<logIngresosDiasI[]> {
+    let direccion = this.url + "/log_ingresos_days";
+    return this.http.get<logIngresosDiasI[]>(direccion)
+  }
+
+  getPermisos(): Observable<permisosI[]>{
+    let direccion = this.url + "/permisos";
+    return this.http.get<permisosI[]>(direccion)
+  }
+
+  getPermisosUsuario(id_usuario): Observable<permisosI>{
+    let direccion = this.url + "/permisos_usuario/" + id_usuario;
+    return this.http.get<permisosI>(direccion)
+  }
+
+  getOnePermiso(id_permiso):Observable<permisosI>{
+    let direccion = this.url + "/one_permiso/" + id_permiso
+    return this.http.get<permisosI>(direccion)
+  }
+
+  actualizarPermiso(form:onePermisosI):Observable<onePermisosI>{
+    let direccion = this.url + "/editar_permiso"
+    return this.http.put<onePermisosI>(direccion, form);
+  }
 
 }

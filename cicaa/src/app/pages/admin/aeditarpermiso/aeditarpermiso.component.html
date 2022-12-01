@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Editar Permiso</h1>
+    <form [formGroup]="formEditarPermiso" (ngSubmit)="editarOnePermiso(formEditarPermiso.value)">
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+            <div class="form-outline mb-4">
+                <input type="email" id="form3Example3" class="form-control" formControlName="ID_PERMISO" disabled>
+                <label class="form-label" for="form3Example3">ID Registro</label>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="id_permiso" class="form-control" formControlName="NOMBRES" disabled/>
+                    <label class="form-label" for="form3Example1">Nombres</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="form3Example2" class="form-control" formControlName="APELLIDOS" disabled/>
+                    <label class="form-label" for="form3Example2">Apellidos</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="form3Example2" class="form-control" formControlName="ID_SALON" />
+                    <label class="form-label" for="form3Example2">Salon</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="form3Example2" class="form-control" formControlName="PERMISO" />
+                    <label class="form-label" for="form3Example2">Permiso</label>
+                </div>
+            </div>
+        </div>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Actualizar</button>
+    </form>
+</div>
+<app-footer></app-footer>

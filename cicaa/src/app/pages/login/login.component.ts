@@ -14,10 +14,7 @@ export class LoginComponent implements OnInit {
   private isvalidemail = /\S+@\S+\.\S+/;
   estado: boolean = true;
 
-  constructor(
-    private _builder: FormBuilder,
-    private api: ApiService,
-    private router: Router) {
+  constructor(private _builder: FormBuilder, private api: ApiService, private router: Router) {
     this.loginForm = this._builder.group({
       CORREO: ['', [Validators.required, Validators.pattern(this.isvalidemail)]],
       CONTRASENA: ['', [Validators.required, Validators.minLength(3)]]
@@ -25,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
   onLogin(form: LoginI) {
     this.api.login(form).subscribe((res) => {
-      if (res[`message`] != 'fail') {
+      if (res[`codigo`] != 'Error') {
         this.router.navigate([""]);
       } else {
         this.estado = false;

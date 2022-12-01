@@ -20,6 +20,8 @@ import { ButtonComponent } from './componentes/button/button.component';
 import { InputComponent } from './componentes/input/input.component';
 import { ValidacionespropiasComponent } from './class/validacionespropias/validacionespropias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AeditarpermisoComponent } from './pages/admin/aeditarpermiso/aeditarpermiso.component';
+import { ApermisosusuarioComponent } from './pages/admin/apermisosusuario/apermisosusuario.component';
 
 
 
@@ -36,7 +38,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ModalComponent,
     ButtonComponent,
     InputComponent,
-    ValidacionespropiasComponent
+    ValidacionespropiasComponent,
+    AeditarpermisoComponent,
+    ApermisosusuarioComponent
   ],
   imports: [
     BrowserModule,
