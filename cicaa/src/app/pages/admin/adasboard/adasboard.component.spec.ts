@@ -8,9 +8,9 @@ describe('AdasboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdasboardComponent ]
+      declarations: [AdasboardComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AdasboardComponent);
     component = fixture.componentInstance;

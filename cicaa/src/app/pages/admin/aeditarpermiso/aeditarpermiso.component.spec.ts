@@ -8,9 +8,9 @@ describe('AeditarpermisoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AeditarpermisoComponent ]
+      declarations: [AeditarpermisoComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AeditarpermisoComponent);
     component = fixture.componentInstance;

@@ -1,4 +1,4 @@
-export interface LoginI{
-    CORREO:string;
-    CONTRASENA:string;
+export interface LoginI {
+    CORREO: string;
+    CONTRASENA: string;
 }

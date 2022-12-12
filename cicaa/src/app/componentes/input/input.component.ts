@@ -12,7 +12,7 @@ export class InputComponent implements OnInit {
   @Input() iname: string;
   @Input() iid: string;
   @Input() ialt: string;
-  @Input() iplace: string;  
+  @Input() iplace: string;
   constructor() { }
 
   ngOnInit(): void {

@@ -13,7 +13,7 @@ export class AadmistracionComponent implements OnInit {
   pAdminForm: FormGroup;
 
   usuariosLista: ListaUsuariosI[] = [];
-  permisosLista: permisosI[]=[];
+  permisosLista: permisosI[] = [];
 
   constructor(private _builder: FormBuilder, private api: ApiService, private router: Router) {
     this.pAdminForm = this._builder.group({
@@ -30,12 +30,12 @@ export class AadmistracionComponent implements OnInit {
     });
   }
 
-  nuevoPermiso(){
+  nuevoPermiso() {
     this.router.navigate(['nuevopermiso']);
   }
 
-  verPermisosUsuario(id_usuario){
-    this.router.navigate(['permisosusuarios',id_usuario])
+  verPermisosUsuario(id_usuario) {
+    this.router.navigate(['permisosusuarios', id_usuario])
   }
 
   onPermit(form) {

@@ -1,203 +1,50 @@
 <app-navbar></app-navbar>
-
 <div class="container">
     <div class="row">
-        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mt-5 mb-5">
-            <div class="card shadow p-2 mt-1 mb-5 bg-body rounded">
-                <div class="card-body">
-                    <h5 class="card-title">Permisos</h5>
-                    <form [formGroup]="pAdminForm" (ngSubmit)="onPermit(pAdminForm.value)">
-
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                formControlName="typedocument" autofocus required>
-                                <option value="" selected>Abrir menu</option>
-                                <option value="1">CC</option>
-                                <option value="2">TI</option>
-                                <option value="3">CE</option>
-                            </select>
-                            <label for="floatingSelect">Selecionar tipo documento</label>
-                            <div *ngIf="this.pAdminForm.get('typedocument').touched">
-                                <div *ngIf="this.pAdminForm.get('typedocument').errors?.required"
-                                    class="alert alert-danger">Type document is required.</div>
-                            </div>
-                        </div>
-
-                        <div class="mb-3 mt-3">
-                            <input type="text" class="form-control" id="txtDocumen" placeholder="Enter documento"
-                                formControlName="txtDocumen" required>
-
-                            <div
-                                *ngIf="this.pAdminForm.get('txtDocumen').touched || this.pAdminForm.get('txtDocumen').dirty">
-                                <div *ngIf="this.pAdminForm.get('txtDocumen').errors?.required"
-                                    class="alert alert-danger">The document is required.</div>
-                                <div *ngIf="this.pAdminForm.get('txtDocumen').errors?.minlength || this.pAdminForm.get('txtDocumen').errors?.maxlength"
-                                    class="alert alert-danger">Please, this field must have a minimum of 8 characters
-                                    and a maximum of 10 characters.</div>
-                                <div *ngIf="this.pAdminForm.get('txtDocumen').errors?.pattern"
-                                    class="alert alert-danger">Please, this field only for numbers.</div>
-                            </div>
-                        </div>
-                        <div class="mb-3 mt-3">
-                            <input type="text" class="form-control" id="txtNombre" placeholder="Enter nombre"
-                                formControlName="txtNombre" required>
-
-                            <div
-                                *ngIf="this.pAdminForm.get('txtNombre').touched || this.pAdminForm.get('txtNombre').dirty">
-                                <div *ngIf="this.pAdminForm.get('txtNombre').errors?.required"
-                                    class="alert alert-danger">The name is required.</div>
-                                <div *ngIf="this.pAdminForm.get('txtNombre').errors?.pattern"
-                                    class="alert alert-danger">Please, this field only for letters.</div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="txtApellido" placeholder="Enter apellido"
-                                formControlName="txtApellido" required>
-
-                            <div
-                                *ngIf="this.pAdminForm.get('txtApellido').touched || this.pAdminForm.get('txtApellido').dirty">
-                                <div *ngIf="this.pAdminForm.get('txtApellido').errors?.required"
-                                    class="alert alert-danger">The surname is required.</div>
-                                <div *ngIf="this.pAdminForm.get('txtApellido').errors?.pattern"
-                                    class="alert alert-danger">Please, this field only for letters.</div>
-                            </div>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                formControlName="nSalon" required>
-                                <option value="" selected>Abrir menu</option>
-                                <option value="12">12 </option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                            <label for="floatingSelect">Agregar permiso a salon</label>
-                            <div *ngIf="this.pAdminForm.get('nSalon').touched">
-                                <div *ngIf="this.pAdminForm.get('nSalon').errors?.required" class="alert alert-danger">
-                                    The classroom is required.</div>
-                            </div>
-                        </div>
-                        <div class="form-group ps-1">
-                            <input type="date" name="" id="" required>
-                            <input type="time" name="" id="" required>
-                            <input type="time" name="" id="" required>
-                        </div>
-
-                        <div class="mt-4 text-center">
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                            <button type="reset" class="btn btn-warning ms-2">Cancelar</button>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
-
-        </div> -->
         <div class="col-xl-12 col-lg-8 col-md-8 col-sm-12 col-12 mt-2">
             <h1 class="fs-4 mb-5 mt-4 text-end">Administración de permisos</h1>
             <!-- <button class="btn btn-primary fs-4 mb-5 mt-4" (click)="nuevoPermiso()">Nuevo permiso</button> -->
-            <table class="table table-hover shadow p-3 mb-5 bg-body rounded">
-                <thead class="bg-info">
-                    <tr class="text-center">
-                        <th scope="col">ID registro</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <!-- <th scope="col">Rol</th> -->
-                        <!-- <th scope="col">Salon</th>
-                        <th scope="col">Permiso</th> -->
-                        <th scope="col">Permisos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="text-center" *ngFor="let permisos of permisosLista">
-                        <td>{{permisos.ID_PERMISO}}</td>
-                        <td>{{permisos.NOMBRES}}</td>
-                        <td>{{permisos.APELLIDOS}}</td>
-                        <!-- <td *ngIf="permisos.ID_ROL==2">Docente</td>
-                        <th scope="row">{{permisos.ID_SALON}}</th>
-                        <td *ngIf="permisos.PERMISO==1">Si</td>
-                        <td *ngIf="permisos.PERMISO==0">No</td> -->
-                        <td>
-                            <!-- <button class="btn btn-danger" disabled="disabled">Eliminar</button> -->
-                            <button class="btn btn-success" (click)="verPermisosUsuario(permisos.ID_USUARIO)">Ver</button>
-                        </td>
-                    </tr>
-                    <!-- <tr>
-                        <th scope="row">2</th>
-                        <td>Juanito</td>
-                        <td>Perez</td>
-                        <td>Estudiante</td>
-                        <td>22/09/23</td>
-                        <td>12:00 - 15:59</td>
-                        <td>
-                            <button class="btn btn-danger"  disabled="disabled">Eliminar</button>
-                            <button  class="btn btn-warning" disabled="disabled">Editar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Juana</td>
-                        <td>Perez</td>
-                        <td>Docente</td>
-                        <td>22/09/23</td>
-                        <td>12:00 - 15:59</td>
-                        <td>
-                            <button class="btn btn-danger"  disabled="disabled">Eliminar</button>
-                            <button  class="btn btn-warning" disabled="disabled">Editar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Lux</td>
-                        <td>Salguedo</td>
-                        <td>Estudiante</td>
-                        <td>22/09/23</td>
-                        <td>12:00 - 15:59</td>
-                        <td>
-                            <button class="btn btn-danger"  disabled="disabled">Eliminar</button>
-                            <button  class="btn btn-warning" disabled="disabled">Editar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Yeiris</td>
-                        <td>Perez</td>
-                        <td>Estudiante</td>
-                        <td>22/09/23</td>
-                        <td>12:00 - 15:59</td>
-                        <td>
-                            <button class="btn btn-danger"  disabled="disabled">Eliminar</button>
-                            <button  class="btn btn-warning" disabled="disabled">Editar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">13</th>
-                        <td>Camila</td>
-                        <td>Perez</td>
-                        <td>Estudiante</td>
-                        <td>22/09/23</td>
-                        <td>12:00 - 15:59</td>
-                        <td>
-                            <button class="btn btn-danger"  disabled="disabled">Eliminar</button>
-                            <button  class="btn btn-warning" disabled="disabled">Editar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">12</th>
-                        <td>Ana</td>
-                        <td>Castrillon</td>
-                        <td>Estudiante</td>
-                        <td>22/09/23</td>
-                        <td>12:00 - 15:59</td>
-                        <td>
-                            <button class="btn btn-danger"  disabled="disabled">Eliminar</button>
-                            <button  class="btn btn-warning" disabled="disabled">Editar</button>
-                        </td>
-                    </tr> -->
-                </tbody>
-            </table>
+            <div class="container">
+                <div class="table-responsive custom-table-responsive shadow">
+                    <table class="table custom-table text-center table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id Registro</th>
+                                <th scope="col">Nombes</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Permisos</th>
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                            <ng-container *ngFor="let permisos of permisosLista">
+                                <tr scope="row ">
+                                    <td class="fs-4">
+                                        {{ permisos.ID_PERMISO }}
+                                    </td>
+                                    <td class="fs-5">{{ permisos.NOMBRES | titlecase }}</td>
+                                    <td class="fs-5">
+                                        {{ permisos.APELLIDOS | titlecase }}
+                                        <!-- <small class="d-block">Far far away, behind the word mountains</small> -->
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success w-50 shadow"
+                                            (click)="verPermisosUsuario(permisos.ID_USUARIO)">
+                                            Ver
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="spacer">
+                                    <td colspan="100"></td>
+                                </tr>
+                                <tr class="spacer">
+                                    <td colspan="100"></td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <app-footer></app-footer>

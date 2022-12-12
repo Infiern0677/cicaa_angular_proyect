@@ -52,6 +52,7 @@ export class AeditarpermisoComponent implements OnInit {
 
     this.api.actualizarPermiso(form).subscribe(data => {
       console.log(data)
+      this.router.navigate(['administracion'])
     })
     console.log(form);
   }

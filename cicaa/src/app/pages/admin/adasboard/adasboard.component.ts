@@ -10,6 +10,7 @@ import { logIngresosI } from 'src/app/model/logIngresos.interface';
 import { logIngresosDiasI } from 'src/app/model/logIngresosDias.interfaces';
 import { ListaInformacionPerfilI } from 'src/app/model/informacionPerfil.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ingresosI } from 'src/app/model/ingresos.interfaces';
 Chart.register(...registerables);
 
 export interface UserElement {
@@ -60,42 +61,33 @@ export class AdasboardComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   usuariosLista: ListaUsuariosI[] = [];
-  informacionPerfilLista: ListaInformacionPerfilI[]=[];
+  informacionPerfilLista: ListaInformacionPerfilI[] = [];
   logIngresosLista: logIngresosI[] = [];
+  ingresosLista: ingresosI[] = [];
   logIngresosListaDias: logIngresosDiasI[] = [];
   helper = new JwtHelperService();
-  decode_token=this.helper.decodeToken(localStorage.getItem('token'));
+  decode_token = this.helper.decodeToken(localStorage.getItem('token'));
   constructor(public api: ApiService, private router: Router) {
-    //   this.api.getLogIngresos().subscribe((dataCantidad) => {
-    //   this.logIngresosLista = dataCantidad;
-    //   console.log(dataCantidad);
-    //   this.RenderChart(this.logIngresosLista, this.logIngresosListaDias);
-    // });
-    // this.api.getLogIngresosDias().subscribe((dataCantidad2) => {
-    //   this.logIngresosListaDias = dataCantidad2;
-    //   console.log(dataCantidad2[0]['Lunes']);
-    //   // this.RenderChart(this.logIngresosLista, this.logIngresosListaDias);
-    // });
   }
 
   ngOnInit(): void {
     this.pintarDatos();
-    // this.usuariosLista=this.decode_token;
-    // console.log(this.usuariosLista)
   }
 
   pintarDatos() {
-    this.informacionPerfilLista=this.decode_token;
+    this.informacionPerfilLista = this.decode_token;
     this.api.getUsuarios().subscribe((data) => {
       this.usuariosLista = data;
-      // console.log(data);
+    });
+
+    this.api.getUltimosIngresos().subscribe((dataIngresos) => {
+      this.ingresosLista = dataIngresos;
+      console.log(dataIngresos);
     });
 
     this.api.getLogIngresos().subscribe((dataCantidad) => {
       this.logIngresosLista = dataCantidad;
-      // console.log(dataCantidad, "desde nognit");
-      // this.RenderChart(this.logIngresosLista, this.logIngresosListaDias);
-      if(dataCantidad.length>0){
+      if (dataCantidad.length > 0) {
         const meses = [
           'Enero',
           'Febrero',
@@ -181,9 +173,6 @@ export class AdasboardComponent implements OnInit {
     });
     this.api.getLogIngresosDias().subscribe((dataCantidad2) => {
       this.logIngresosListaDias = dataCantidad2;
-      // console.log(dataCantidad2, "desde nognit");
-      // this.RenderChart(this.logIngresosLista, this.logIngresosListaDias);
-
       const dias = [
         'Lunes',
         'Martes',
@@ -227,129 +216,7 @@ export class AdasboardComponent implements OnInit {
         });
       };
     });
-    // this.RenderChart(this.logIngresosLista, this.logIngresosListaDias);
-
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
-
-  // RenderChart(datos: logIngresosI[], dataDias: logIngresosDiasI[]) {
-  //   console.log(this.logIngresosLista)
-  //   console.log(datos);
-  //   const meses = [
-  //     'January',
-  //     'February',
-  //     'March',
-  //     'April',
-  //     'May',
-  //     'June',
-  //     'July',
-  //     'August',
-  //     'September',
-  //     'October',
-  //     'November',
-  //     'December',
-  //   ];
-  //   const dias = [
-  //     'Lunes',
-  //     'Martes',
-  //     'Miercoles',
-  //     'Jueves',
-  //     'Viernes',
-  //     'Sabados',
-  //     'Domingos',
-  //   ];
-
-  //   const piChart = new Chart('piChart', {
-  //     type: 'radar',
-  //     data: {
-  //       labels: meses,
-  //       datasets: [
-  //         {
-  //           label: 'Inasistencias',
-  //           data: [datos[1]['January'], datos[1]['February'], datos[1]['March'], datos[1]['April'], datos[1]['May'], datos[1]['June'], datos[1]['July'], datos[1]['August'], datos[1]['September'], datos[1]['October'], datos[1]['November'], datos[1]['December']],
-  //           backgroundColor: [
-  //             'rgba(255, 99, 132, 0.2)',
-  //             'rgba(54, 162, 235, 0.2)',
-  //             'rgba(255, 206, 86, 0.2)',
-  //             'rgba(75, 192, 192, 0.2)',
-  //             'rgba(153, 102, 255, 0.2)',
-  //             'rgba(255, 159, 64, 0.2)',
-  //           ],
-  //           borderColor: [
-  //             'rgba(255, 99, 132, 1)',
-  //             'rgba(54, 162, 235, 1)',
-  //             'rgba(255, 206, 86, 1)',
-  //             'rgba(75, 192, 192, 1)',
-  //             'rgba(153, 102, 255, 1)',
-  //             'rgba(255, 159, 64, 1)',
-  //           ],
-  //           borderWidth: 1,
-  //         },
-  //         {
-  //           label: 'Asistencias',
-  //           data: [datos[0]['January'], datos[0]['February'], datos[0]['March'], datos[0]['April'], datos[0]['May'], datos[0]['June'], datos[0]['July'], datos[0]['August'], datos[0]['September'], datos[0]['October'], datos[0]['November'], datos[0]['December']],
-  //           backgroundColor: [
-  //             'rgba(255, 99, 132, 0.2)',
-  //             'rgba(54, 162, 235, 0.2)',
-  //             'rgba(255, 206, 86, 0.2)',
-  //             'rgba(75, 192, 192, 0.2)',
-  //             'rgba(153, 102, 255, 0.2)',
-  //             'rgba(255, 159, 64, 0.2)',
-  //           ],
-  //           borderColor: [
-  //             'rgba(255, 99, 132, 1)',
-  //             'rgba(54, 162, 235, 1)',
-  //             'rgba(255, 206, 86, 1)',
-  //             'rgba(75, 192, 192, 1)',
-  //             'rgba(153, 102, 255, 1)',
-  //             'rgba(255, 159, 64, 1)',
-  //           ],
-  //           borderWidth: 1,
-  //         },
-  //       ],
-  //     },
-  //     options: {
-  //       scales: {
-  //         y: {
-  //           beginAtZero: true,
-  //         },
-  //       },
-  //     },
-  //   });
-  //   if (dataDias.length > 0) {
-  //     const lineChart = new Chart('lineChart', {
-  //       type: 'bar',
-  //       data: {
-  //         labels: dias,
-  //         datasets: [
-  //           {
-  //             label: 'Inasistencias',
-  //             data: [dataDias[0]['Lunes'], dataDias[0]['Martes'], dataDias[0]['Miercoles'], dataDias[0]['Jueves'], dataDias[0]['Viernes'], dataDias[0]['Sabado'], dataDias[0]['Domingo']],
-  //             backgroundColor: ['rgba(39, 0, 255, 0.45)'],
-  //             borderColor: ['rgba(39, 0, 255, 1)'],
-  //             borderWidth: 1,
-  //             borderRadius: 15
-  //           },
-  //           {
-  //             label: 'Asistencias',
-  //             data: [dataDias[1]['Lunes'], dataDias[1]['Martes'], dataDias[1]['Miercoles'], dataDias[1]['Jueves'], dataDias[1]['Viernes'], dataDias[1]['Sabado'], dataDias[1]['Domingo']],
-  //             backgroundColor: ['rgba(255, 0, 140, 0.34)'],
-  //             borderColor: ['rgba(255, 0, 140, 1)'],
-  //             borderWidth: 1,
-  //             borderRadius: 15
-  //           },
-  //         ],
-  //       },
-  //       options: {
-  //         scales: {
-  //           y: {
-  //             beginAtZero: true,
-  //           },
-  //         },
-  //       },
-  //     });
-  //   }
-  // }
 }

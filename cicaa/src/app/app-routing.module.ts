@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'contactanos', component: ContactanosComponent },
-  {path: 'permisosusuarios/:id_usuario', component: ApermisosusuarioComponent},
+  { path: 'permisosusuarios/:id_usuario', component: ApermisosusuarioComponent },
   { path: 'editarpermiso/:id_permiso', component: AeditarpermisoComponent },
   { path: 'nuevopermiso', component: AnuevopermisoComponent }
 ];
